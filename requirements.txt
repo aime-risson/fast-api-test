@@ -1,0 +1,7 @@
+fastapi~=0.63.0
+pydantic~=1.7.3
+uvicorn~=0.13.3
+pyVinted
+git+https://github.com/aime-risson/request-api-rotator.git
+python-dotenv
+pytest
