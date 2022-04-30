@@ -5,3 +5,4 @@ pyVinted
 git+https://github.com/aime-risson/request-api-rotator.git
 python-dotenv
 pytest
+algoliasearch

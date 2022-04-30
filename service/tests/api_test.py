@@ -4,6 +4,7 @@ from service.main import app
 
 client = TestClient(app)
 
+
 def test_vited_search():
     paramss = {
         "search_text": "Pull nike",
