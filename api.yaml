@@ -23,7 +23,7 @@ metadata:
   labels:
     app: kf-api
 spec:
-  replicas: 5
+  replicas: 10
   selector:
     matchLabels:
       app: kf-api
@@ -42,7 +42,7 @@ spec:
             # You must specify requests for CPU to autoscale
             # based on CPU utilization
             requests:
-              cpu: "250m"
+              cpu: "150m"
 
           env:
             - name: AWS_ACCESS_KEY_ID
@@ -66,3 +66,18 @@ spec:
                   key: AWS_DEFAULT_REGION
                   optional: false # same as default; "mysecret" must exist
                   # and include a key named "username"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: es
+  name: kibana-svc
+spec:
+  selector:
+    app: es-kibana
+  ports:
+    - protocol: "TCP"
+      port: 5601
+      targetPort: 5601
+  type: LoadBalancer

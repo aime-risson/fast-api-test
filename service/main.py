@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends
 from .core.config import settings
 from functools import lru_cache
+from fastapi.middleware.cors import CORSMiddleware
 
 from service.api.api_v1.api import router as api_router
 from service.core.config import API_V1_STR, PROJECT_NAME
@@ -11,6 +12,15 @@ app = FastAPI(
     # openapi_prefix="/prod"
 )
 
+origins = ["http://localhost", "https://www.vinted.fr"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 app.include_router(api_router, prefix=API_V1_STR)
