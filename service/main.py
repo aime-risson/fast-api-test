@@ -12,7 +12,7 @@ app = FastAPI(
     # openapi_prefix="/prod"
 )
 
-origins = ["http://localhost:3000", "https://www.vinted.fr", "https://www.carhartt-wip.com", "https://www.ralphlauren.fr", "*"]
+origins = ["http://localhost:3000", "https://www.vinted.fr", "https://www.carhartt-wip.com", "https://www.ralphlauren.fr", "*", "https://www.yager.eu", "https://yager.eu", "www.yager.eu", "yager.eu", ]
 
 app.add_middleware(
     CORSMiddleware,

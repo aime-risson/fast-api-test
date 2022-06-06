@@ -27,4 +27,8 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: aimerisson/fast-api-test:0.0.1
+
+         
+
+          tags: aimerisson/fast-api-test:0.0.5
+
