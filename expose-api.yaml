@@ -1,0 +1,34 @@
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: expose-test-api
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host("search.vitalert.fr")
+    kind: Rule
+    services:
+    - name: kf-api-svc
+      port: 8080
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: expose-test-api-tls
+  namespace: default
+spec:
+  entryPoints:
+      - websecure
+  routes:
+    - kind: Rule
+      match: Host("search.vitalert.fr")
+      services:
+        - name: kf-api-svc
+          port: 8080
+
+  tls:
+    secretName: vitalert-wildcard-certificate-prod

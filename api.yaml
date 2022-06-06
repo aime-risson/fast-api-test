@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: kf-api
-          image: aimerisson/fast-api-test:0.0.1
+          image: aimerisson/fast-api-test:0.0.5
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
@@ -66,18 +66,4 @@ spec:
                   key: AWS_DEFAULT_REGION
                   optional: false # same as default; "mysecret" must exist
                   # and include a key named "username"
----
 
-apiVersion: v1
-kind: Service
-metadata:
-  namespace: es
-  name: kibana-svc
-spec:
-  selector:
-    app: es-kibana
-  ports:
-    - protocol: "TCP"
-      port: 5601
-      targetPort: 5601
-  type: LoadBalancer
